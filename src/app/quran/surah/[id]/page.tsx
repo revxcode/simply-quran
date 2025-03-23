@@ -3,18 +3,19 @@ import PrevNextSurah from "@/components/button/prevNextSurah";
 import MainLayout from "@/components/layouts/mainLayout";
 import { cache } from "react";
 
-const fetchSurah = cache(async (surah: number) => {
-  const hostName = process.env.NEXT_PUBLIC_HOST_NAME;
-  const response = await fetch(`${hostName}/quran/surahs/surah-${surah}.json`);
+const fetchSurah = cache(async (id: number) => {
+  const host = process.env.NEXT_PUBLIC_HOST_NAME;
+  console.log(host);
+  const response = await fetch(`${host}/api/quran/surah/${id}`);
   const data = await response.json();
   return data;
 });
 
 export default async function SurahPage({ params }: {
-  params: Promise<{ surah: number }>
+  params: Promise<{ id: number }>
 }) {
-  const { surah } = await params;
-  const data = await fetchSurah(surah);
+  const { id } = await params;
+  const data = await fetchSurah(id);
 
   return (
     <MainLayout>

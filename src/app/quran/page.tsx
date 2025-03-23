@@ -26,7 +26,7 @@ const fetchSurahs = cache(async (): Promise<Surah[]> => {
   const checkLocalStorage = localStorage.getItem("surahs");
 
   if (!checkLocalStorage) {
-    const response = await fetch("/quran/quran.json");
+    const response = await fetch("/api/quran");
     const data = await response.json();
 
     // Save to localStorage
