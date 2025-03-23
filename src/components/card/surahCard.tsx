@@ -31,7 +31,7 @@ export default function SurahCard({
       </div>
       <SaveFavoriteButton {...surah} />
       <Link
-        href={`/quran/${surah.nomor}`}
+        href={`/quran/surah/${surah.nomor}`}
         className="absolute rounded-lg duration-200 p-4 pt-16 w-full h-full z-0">
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
