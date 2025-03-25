@@ -1,13 +1,75 @@
 import fs from 'fs';
 import path from 'path';
 
-async function fetchSurah(surahNumber: number) {
+interface Ayat {
+  id: number;
+  surah: number;
+  nomor: number;
+  ar: string;
+  tr: string;
+  idn: string;
+}
+
+interface SuratSelanjutnya {
+  id: number;
+  nomor: number;
+  nama: string;
+  nama_latin: string;
+  jumlah_ayat: number;
+  tempat_turun: string;
+  arti: string;
+  deskripsi: string;
+  audio: string;
+}
+
+interface SuratSebelumnya {
+  id: number;
+  nomor: number;
+  nama: string;
+  nama_latin: string;
+  jumlah_ayat: number;
+  tempat_turun: string;
+  arti: string;
+  deskripsi: string;
+  audio: string;
+}
+
+interface Surah {
+  id: number;
+  nomor: number;
+  nama: string;
+  jumlah_ayat: number;
+  nama_latin: string;
+  arti: string;
+  tempat_turun: string;
+  deskripsi: string;
+  audio: string;
+  ayat: Ayat[];
+  surat_selanjutnya: SuratSelanjutnya;
+  surat_sebelumnya: SuratSebelumnya;
+}
+
+async function fetchSurah(surahNumber: number): Promise<Surah | undefined> {
   try {
     const response = await fetch('https://quran-api.santrikoding.com/api/surah/' + surahNumber);
     const data = await response.json();
-    return data;
+    return {
+      id: data.data.id,
+      nomor: data.data.nomor,
+      nama: data.data.nama,
+      jumlah_ayat: data.data.jumlah_ayat,
+      nama_latin: data.data.nama_latin,
+      arti: data.data.arti,
+      tempat_turun: data.data.tempat_turun,
+      deskripsi: data.data.deskripsi,
+      audio: data.data.audio,
+      ayat: data.data.ayat,
+      surat_selanjutnya: data.data.surat_selanjutnya,
+      surat_sebelumnya: data.data.surat_sebelumnya,
+    }
   } catch (error) {
     console.error(error);
+    return undefined;
   }
 }
 

@@ -68,7 +68,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc }) => {
 
   return (
     <div className="flex flex-col items-center px-2">
-      <audio ref={audioRef} src={audioSrc} className="w-full h-10 bg-neutral-300 rounded-md" preload="metadata" />
+      <audio ref={audioRef} src={audioSrc} className="w-full h-10 bg-neutral-300 rounded-md" />
 
       <div className="w-full flex justify-between items-center py-2">
         <button
