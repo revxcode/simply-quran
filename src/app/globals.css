@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 @import "tailwindcss";
 
+=======
+@import url("https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap");
+@import "tailwindcss";
+>>>>>>> edb4c35 (Simple platform Al-Qur'an and Hadist)
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -10,6 +15,10 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+<<<<<<< HEAD
+=======
+  --fontamiri: "Amiri Quran", serif;
+>>>>>>> edb4c35 (Simple platform Al-Qur'an and Hadist)
 }
 
 @media (prefers-color-scheme: dark) {

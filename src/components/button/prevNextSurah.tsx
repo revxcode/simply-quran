@@ -9,6 +9,7 @@ export default function PrevNextSurah({ prev, next }: { prev: number, next: numb
     <div className="flex justify-between items-center px-8">
       <button
         type="button"
+<<<<<<< HEAD
         onClick={() => router.push(`/quran/${prev}`)}
         disabled={prev === 0}
         className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg cursor-pointer">
@@ -21,6 +22,20 @@ export default function PrevNextSurah({ prev, next }: { prev: number, next: numb
         disabled={next === 114}
         className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg cursor-pointer">
         <span className="text-lg">Selanjutnya</span>
+=======
+        onClick={() => router.push(`/quran/surah/${prev}`)}
+        disabled={prev === 0}
+        className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg cursor-pointer">
+        <span className="text-2xl">←</span>
+        <span className="text-lg hidden md:block">Sebelumnya</span>
+      </button>
+      <button
+        type="button"
+        onClick={() => router.push(`/quran/surah/${next}`)}
+        disabled={next === 114}
+        className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg cursor-pointer">
+        <span className="text-lg hidden md:block">Selanjutnya</span>
+>>>>>>> edb4c35 (Simple platform Al-Qur'an and Hadist)
         <span className="text-2xl">→</span>
       </button>
     </div>

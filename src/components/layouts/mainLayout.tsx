@@ -6,7 +6,11 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     <div className="w-full min-h-screen bg-white">
       <div className="flex w-full h-20"></div>
       <div className="flex w-full h-[87vh] p-4">
+<<<<<<< HEAD
         <div className="flex flex-col w-24 h-full items-center py-5 gap-4">
+=======
+        <div className="flex flex-col md:w-24 h-full items-center py-5 gap-4">
+>>>>>>> edb4c35 (Simple platform Al-Qur'an and Hadist)
           <Link
             href="/quran"
             className="w-12 h-12 bg-white rounded-full shadow-lg flex justify-center items-center hover:bg-gray-100">
@@ -18,10 +22,17 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             <Heart className="w-6 h-6 stroke-green-600" />
           </Link>
         </div>
+<<<<<<< HEAD
         <div className="flex-1 h-[80vh] bg-gray-100 rounded-2xl p-8 overflow-y-auto">
           {children}
         </div>
         <div className="w-52 h-[80vh]">
+=======
+        <div className="flex-1 h-[80vh] bg-gray-100 rounded-2xl md:p-8 overflow-y-auto">
+          {children}
+        </div>
+        <div className="md:w-52 h-[80vh] hidden flex-col gap-4 md:flex">
+>>>>>>> edb4c35 (Simple platform Al-Qur'an and Hadist)
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-emerald-400 text-sm">Last Reading</h2>
             <div className="flex items-center gap-2 mt-2">
