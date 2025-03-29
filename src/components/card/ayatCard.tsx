@@ -12,7 +12,7 @@ export function AyatCard({ ayat }: { ayat: Ayat }) {
       <div className="flex w-full flex-col">
         <span className="md:text-md text-neutral-500 dark:text-neutral-400 text-start py-2">{ayat.idn}</span>
       </div>
-      <div className="w-full border-b border-neutral-200 my-4"></div>
+      <div className="w-full border-b border-neutral-300 dark:border-neutral-700 my-4"></div>
     </div>
   );
 }

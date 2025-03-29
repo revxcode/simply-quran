@@ -121,11 +121,17 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc }) => {
 
         <input
           type="range"
-          value={progress}
+          value={isNaN(progress) ? 0 : progress}
+          min="0"
+          max="100"
+          step="0.1"
+          style={{ backgroundSize: `${progress}%` }}
           onChange={handleSeek}
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
         />
-        <span className="text-center text-neutral-800 dark:text-neutral-200 text-nowrap text-xs ml-2">{formatTime(currentTime)} / {formatTime(duration)}</span>
+        <span className="text-center text-neutral-800 dark:text-neutral-200 text-nowrap text-xs ml-2">
+          {formatTime(currentTime)} / {formatTime(duration) === 'NaN:NaN' ? '00:00' : formatTime(duration)}
+        </span>
       </div>
     </div>
   );

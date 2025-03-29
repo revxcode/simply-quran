@@ -1,6 +1,6 @@
 "use client"
 
-import { BookOpen, Heart, ChevronRight, ChevronUp } from "lucide-react";
+import { BookOpen, Heart, ChevronRight, ChevronUp, Settings } from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "../button/themeModeToggle";
 import { useState, useRef, useEffect } from "react";
@@ -10,12 +10,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   const [showButton, setShowButton] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const toggleSidebar = () => {
-    setOpen(!open);
-  };
-
   const handleScroll = () => {
-    // Memeriksa apakah scroll sudah lebih dari 100vh
     if (containerRef.current) {
       const scrollTop = containerRef.current.scrollTop;
       console.log(scrollTop);
@@ -24,7 +19,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   };
 
   const scrollToTop = () => {
-    // Menggunakan ref untuk scroll ke atas dengan smooth scroll
     if (containerRef.current) {
       containerRef.current.scrollTo({
         top: 0,
@@ -49,14 +43,23 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="w-full min-h-screen bg-white dark:bg-neutral-900">
-      <div className="flex w-full h-20 items-center px-4">
+      <div className="flex justify-between w-full h-20 items-center px-4">
         <ModeToggle />
+        <h1 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+          Quran
+        </h1>
+        <Link
+          href="/quran/surah/settings"
+          className="w-12 h-12 bg-white dark:bg-neutral-800 rounded-full shadow-lg flex justify-center items-center hover:bg-gray-100 dark:hover:bg-neutral-700"
+        >
+          <Settings />
+        </Link>
       </div>
       <div className="flex w-full h-[87vh] p-4">
         {/* left sidebar */}
         <div className="relative">
           <button type="button"
-            onClick={toggleSidebar}
+            onClick={() => setOpen(!open)}
             className={`absolute -left-6 top-1/3 cursor-pointer duration-200 ${open ? "rotate-180" : ""}`}>
             <ChevronRight className="w-8 h-8 stroke-emerald-600" />
           </button>
@@ -84,7 +87,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </button>
         </div>
         {/* right sidebar */}
-        <div className="w-52 h-[80vh] hidden md:block">
+        <div className="w-64 h-[80vh] hidden md:block px-2">
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-emerald-400 text-sm">Last Reading</h2>
             <div className="flex items-center gap-2 mt-2">

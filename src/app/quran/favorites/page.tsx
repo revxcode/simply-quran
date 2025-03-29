@@ -2,7 +2,7 @@
 
 import MainLayout from "@/components/layouts/mainLayout";
 import { useEffect } from "react";
-import { useStoreSurahs } from "@/stores/storeSurahs";
+import useStoreFavoriteSurah from "@/stores/storeFavoriteSurah";
 import SurahCard from "@/components/card/surahCard";
 
 interface Surah {
@@ -17,30 +17,51 @@ interface Surah {
   favorite: boolean;
 }
 
-const fetchSurahFavoriteOnly = async (): Promise<Surah[]> => {
-  const checkLocalStorage = localStorage.getItem("surahs");
+const getSurahFavoriteOnly = async (): Promise<Surah[]> => {
+  const checkLocalStorage = localStorage.getItem("favoriteSurah");
 
   if (!checkLocalStorage) {
     return [];
   } else {
-    return JSON.parse(checkLocalStorage);
+    const surahs = JSON.parse(checkLocalStorage) as Surah[];
+    const surahFavorite = surahs.filter((surah) => surah.favorite === true);
+    return surahFavorite;
   }
 }
 
 export default function QuranPage() {
-  const { surahs, setSurahs } = useStoreSurahs();
+  const { favoriteSurah, setFavoriteSurah } = useStoreFavoriteSurah();
 
   useEffect(() => {
-    fetchSurahFavoriteOnly().then((data) => {
-      setSurahs(data);
-    });
-  }, []);
+    const fetchSurah = async () => {
+      const surahFavorite = await getSurahFavoriteOnly();
+      setFavoriteSurah(surahFavorite);
+    }
+
+    fetchSurah();
+  }, [setFavoriteSurah]);
+
+  if (favoriteSurah.length === 0) {
+    return (
+      <MainLayout>
+        <div className="w-full h-full p-4 flex justify-center items-center">
+          <h1 className="text-center text-2xl text-neutral-500">
+            Favorite Surah is empty
+          </h1>
+        </div>
+      </MainLayout>
+    );
+  }
 
   return (
     <MainLayout>
-      <div className="grid md:grid-cols-3 w-full h-fit gap-4">
-        {surahs.map((surah) => (
-          <SurahCard key={surah.nomor} surah={surah} hidden={!surah.favorite} />
+      <div className="grid md:grid-cols-3 w-full h-fit gap-4 p-4">
+        {favoriteSurah.map((surah) => (
+          <SurahCard
+            key={surah.nomor}
+            surah={surah}
+            hidden={!surah.favorite}
+          />
         ))}
       </div>
     </MainLayout >
