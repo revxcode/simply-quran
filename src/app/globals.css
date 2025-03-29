@@ -1,13 +1,21 @@
-<<<<<<< HEAD
+@import url("https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap");
+
 @import "tailwindcss";
 
-=======
-@import url("https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap");
+@custom-variant dark (&:where(.dark, .dark *));
+
 @import "tailwindcss";
->>>>>>> edb4c35 (Simple platform Al-Qur'an and Hadist)
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+@font-face {
+  font-family: "Ayat Quran";
+  src: url("../assets/fonts/AyatQuran11-m2Lj9.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme inline {
@@ -15,10 +23,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-<<<<<<< HEAD
-=======
-  --fontamiri: "Amiri Quran", serif;
->>>>>>> edb4c35 (Simple platform Al-Qur'an and Hadist)
+  --font-amiri: "Amiri Quran", serif;
+  --font-ayat: "Ayat Quran", serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,5 +37,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }

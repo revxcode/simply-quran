@@ -24,9 +24,9 @@ export default function SurahCard({
     <div
       key={surah.nomor}
       hidden={hidden}
-      className="relative flex flex-col w-full h-32 bg-white rounded-2xl gap-4 hover:shadow-lg duration-150 outline-2 hover:outline-emerald-300 z-0"
+      className="relative flex flex-col w-full h-32 bg-white dark:bg-neutral-900 rounded-2xl gap-4 hover:shadow-lg duration-150 outline-2 dark:outline-neutral-600 hover:outline-emerald-300 dark:hover:outline-emerald-500 z-0"
     >
-      <div className="absolute top-4 left-4 flex justify-center items-center w-8 h-8 bg-emerald-50 rounded-full aspect-square z-10">
+      <div className="absolute top-4 left-4 flex justify-center items-center w-8 h-8 bg-emerald-50 dark:bg-neutral-900 rounded-full aspect-square z-10">
         <span className="text-lg font-bold text-emerald-400 z-10">{surah.nomor}</span>
       </div>
       <SaveFavoriteButton {...surah} />
@@ -35,11 +35,11 @@ export default function SurahCard({
         className="absolute rounded-lg duration-200 p-4 pt-16 w-full h-full z-0">
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
-            <span className="text-sm text-neutral-600 font-bold">{surah.nama_latin}</span>
+            <span className="text-sm text-neutral-600 dark:text-neutral-200 font-bold">{surah.nama_latin}</span>
             <span className="text-sm text-neutral-400">{surah.arti}</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-lg text-neutral-600 font-bold text-end">{surah.nama}</span>
+            <span className="text-lg text-neutral-600 dark:text-neutral-200 font-bold text-end font-amiri">{surah.nama}</span>
             <span className="text-sm text-neutral-400">{surah.jumlah_ayat} Ayat</span>
           </div>
         </div>
