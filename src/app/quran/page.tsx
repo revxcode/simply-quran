@@ -50,7 +50,7 @@ export default function QuranPage() {
 
   return (
     <MainLayout>
-      <div className="grid md:grid-cols-3 w-full h-fit gap-4 px-2 py-2">
+      <div className="grid md:grid-cols-3 w-full h-fit gap-4 p-4">
         {surahs.map((surah) => (
           <SurahCard key={surah.nomor} surah={surah} />
         ))}

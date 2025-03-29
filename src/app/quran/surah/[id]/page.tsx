@@ -83,7 +83,7 @@ export default function SurahPage({ params }: {
 
   return (
     <MainLayout>
-      <div className="w-full h-fit bg-white dark:bg-inherit rounded-2xl p-8">
+      <div className="w-full h-fit bg-white dark:bg-inherit rounded-2xl md:p-8 md:w-3/4 mx-auto">
         <div className="flex justify-between items-center">
           <span className="text-2xl font-bold text-emerald-400 bg-emerald-50 dark:bg-neutral-800 px-2 rounded-full">{data.nomor}</span>
           <span className="text-3xl font-bold text-neutral-800 dark:text-neutral-200 font-amiri">{data.nama}</span>
@@ -100,7 +100,7 @@ export default function SurahPage({ params }: {
           <div className="flex justify-center items-center pt-16 tracking-wider"
             hidden={data.nomor === 1 || data.nomor === 9}
           >
-            <span className="text-neutral-800 font-ayat text-4xl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</span>
+            <span className="text-neutral-800 dark:text-neutral-200 font-ayat text-4xl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</span>
           </div>
         </div>
         <div className="relative flex flex-col gap-4 mt-8 py-8">

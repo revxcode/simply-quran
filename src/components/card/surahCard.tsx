@@ -24,7 +24,7 @@ export default function SurahCard({
     <div
       key={surah.nomor}
       hidden={hidden}
-      className="relative flex flex-col w-full h-32 bg-white dark:bg-neutral-900 rounded-2xl gap-4 hover:shadow-lg duration-150 outline-2 dark:outline-neutral-600 hover:outline-emerald-300 dark:hover:outline-emerald-500 z-0"
+      className="relative flex flex-col w-full h-32 bg-white dark:bg-neutral-900 rounded-2xl gap-4 hover:shadow-lg duration-150 outline-2 outline-neutral-400 dark:outline-neutral-600 hover:outline-emerald-300 dark:hover:outline-emerald-500 z-0"
     >
       <div className="absolute top-4 left-4 flex justify-center items-center w-8 h-8 bg-emerald-50 dark:bg-neutral-900 rounded-full aspect-square z-10">
         <span className="text-lg font-bold text-emerald-400 z-10">{surah.nomor}</span>

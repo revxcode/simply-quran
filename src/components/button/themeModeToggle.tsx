@@ -26,10 +26,11 @@ export function ModeToggle() {
 
   return (
     <button
-      className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-sm transition-colors duration-200 dark:border-neutral-700 dark:bg-neutral-800 cursor-pointer"
+      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-sm transition-colors duration-200 dark:border-neutral-700 dark:bg-neutral-800 cursor-pointer"
       onClick={toggleTheme}
     >
-      {resolvedTheme === "dark" ? <Sun className="text-yellow-500" /> : <Moon className="text-blue-500" />}
+      <Sun className={"absolute text-yellow-500 duration-700 ease-in-out " + (resolvedTheme === "dark" ? "rotate-0 opacity-0" : "rotate-[360deg]")} />
+      <Moon className={"absolute text-blue-500 duration-700 ease-in-out " + (resolvedTheme === "dark" ? "rotate-[360deg]" : "rotate-0 opacity-0")} />
     </button>
   )
 }
