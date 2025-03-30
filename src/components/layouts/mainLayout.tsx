@@ -82,7 +82,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
         {/* main content */}
-        <div ref={containerRef} className="flex w-full h-[80vh] rounded-2xl overflow-y-auto">
+        <div ref={containerRef} className="flex w-full h-[80vh] rounded-2xl overflow-y-auto max-w-6xl mx-auto">
           {children}
           <button
             type="button"
@@ -92,7 +92,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </button>
         </div>
         {/* right sidebar */}
-        <div className="w-64 h-[80vh] hidden md:block px-2">
+        <div className="w-64 h-[80vh] hidden px-2">
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-emerald-400 text-sm">Last Reading</h2>
             <div className="flex items-center gap-2 mt-2">
