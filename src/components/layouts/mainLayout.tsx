@@ -1,6 +1,6 @@
 "use client"
 
-import { BookOpen, Heart, ChevronRight, ChevronUp, Settings } from "lucide-react";
+import { BookOpen, Heart, ChevronRight, ChevronUp, Settings, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "../button/themeModeToggle";
 import { useState, useRef, useEffect } from "react";
@@ -44,7 +44,12 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="w-full min-h-screen bg-white dark:bg-neutral-900">
       <div className="flex justify-between w-full h-20 items-center px-4">
-        <ModeToggle />
+        <button
+          className="text-neutral-900 dark:text-neutral-100 cursor-pointer"
+          onClick={() => window.history.back()}
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
         <h1 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
           Quran
         </h1>
@@ -52,7 +57,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           href="/quran/surah/settings"
           className="w-12 h-12 bg-white dark:bg-neutral-800 rounded-full shadow-lg flex justify-center items-center hover:bg-gray-100 dark:hover:bg-neutral-700"
         >
-          <Settings />
+          <Settings className="w-6 h-6 stroke-black dark:stroke-white" />
         </Link>
       </div>
       <div className="flex w-full h-[87vh] p-4">

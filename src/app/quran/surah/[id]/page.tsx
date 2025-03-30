@@ -8,15 +8,13 @@ import { useEffect, useRef, useState } from "react";
 import { AyatCard, AyatCardSkeleton } from "@/components/card/ayatCard";
 
 const fetchSurah = async (id: number) => {
-  const host = process.env.NEXT_PUBLIC_HOST_NAME;
-  const response = await fetch(`${host}/api/quran/surah/${id}`);
+  const response = await fetch(`/api/quran/surah/${id}`);
   const data = await response.json();
   return data;
 };
 
 const fetchAyat = async (id: number, s: number, n: number) => {
-  const host = process.env.NEXT_PUBLIC_HOST_NAME;
-  const response = await fetch(`${host}/api/quran/surah/${id}/ayat?start=${s}&end=${n}`);
+  const response = await fetch(`/api/quran/surah/${id}/ayat?start=${s}&end=${n}`);
   const data = await response.json();
   return data;
 };
@@ -120,8 +118,8 @@ export default function SurahPage({ params }: {
           }
           <div
             ref={lastElementRef}
-            className="absolute bottom-[35rem] w-full h-scree"
-            hidden={data.jumlah_ayat === data?.ayat?.length}
+            className="absolute bottom-[35rem] w-full h-[300vh] bg-transparent"
+            hidden={data.jumlah_ayat === data?.ayat?.length || data?.ayat?.length < 10}
           >
           </div>
         </div>

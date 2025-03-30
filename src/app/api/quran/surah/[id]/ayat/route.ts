@@ -24,7 +24,18 @@ export async function GET(request: NextRequest) {
     const data = await fs.promises.readFile(filePath, 'utf8');
     const surah = JSON.parse(data);
     const ayat = surah.ayat.slice(start - 1, end);
-    return NextResponse.json(ayat);
+    return NextResponse.json(ayat,
+      {
+        status: 200,
+        statusText: "OK",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        }
+      }
+    );
   } catch (error) {
     return NextResponse.json({
       status: 404,

@@ -4,9 +4,11 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full h-dvh items-center justify-center">
       <div className="w-full h-full flex flex-col justify-center items-center gap-4 bg-emerald-500 p-2">
-        <h1 className="text-6xl font-bold text-center text-white">Al-Qur'an</h1>
-        <p className="text-center text-neutral-300">Platform Al-Qur'an dan Hadist Digital.</p>
-        <p className="text-center text-neutral-300">APIs from <a
+        <h1 className="text-6xl font-bold text-center text-white font-ramadhan">Al Qur'an</h1>
+        <p className="text-center text-neutral-100">
+          Learn Quran and Hadith with ease
+        </p>
+        <p className="text-center text-neutral-100">Base APIs from <a
           href="https://quran-api.santrikoding.com"
           className="hover:underline"
           target="_blank"

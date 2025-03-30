@@ -1,16 +1,30 @@
 import type { Ayat } from "@/types/Surah";
+import useSettings from "@/hooks/useSettings";
 
 export function AyatCard({ ayat }: { ayat: Ayat }) {
+  const { setting } = useSettings();
   return (
     <div className="flex flex-col gap-2 py-4 animate-fade-in">
       <div className="flex justify-between w-full">
-        <div className="w-12 h-12 flex justify-center items-center mt-6">
-          <span className="text-4xl md:text-6xl font-ayat text-emerald-600">{ayat.nomor}</span>
+        <div className="w-12 h-12 flex justify-center items-center mt-4">
+          <span className="text-5xl md:text-6xl font-ayat text-emerald-600">{ayat.nomor}</span>
         </div>
-        <span className="text-2xl md:text-4xl text-neutral-800 dark:text-neutral-200 text-end py-2 px-2 font-ayat leading-12 md:leading-24">{ayat.ar}</span>
+        <span
+          className="text-neutral-800 dark:text-neutral-200 text-end py-2 px-2 font-ayat tracking-wide leading-12 md:leading-24"
+          style={{
+            fontSize: setting?.arabicStyle?.fontSize + "px",
+            fontFamily: setting?.arabicStyle?.fontFamily,
+          }}
+        >{ayat.ar}
+        </span>
       </div>
       <div className="flex w-full flex-col">
-        <span className="md:text-md text-neutral-500 dark:text-neutral-400 text-start py-2">{ayat.idn}</span>
+        <span className="md:text-md text-neutral-500 dark:text-neutral-400 text-start py-2"
+          style={{
+            fontSize: setting?.latinStyle?.fontSize + "px",
+            fontFamily: setting?.latinStyle?.fontFamily,
+          }}
+        >{ayat.idn}</span>
       </div>
       <div className="w-full border-b border-neutral-300 dark:border-neutral-700 my-4"></div>
     </div>

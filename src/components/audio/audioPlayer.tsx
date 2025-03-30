@@ -2,27 +2,48 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Pause, Play } from 'lucide-react';
+import useSettings from '@/hooks/useSettings';
+import { useParams } from 'next/navigation';
 
 interface AudioPlayerProps {
   audioSrc: string;
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc }) => {
+  const { setting } = useSettings();
+  const params = useParams();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
+  const [reciter, setReciter] = useState<string>();
 
   // Toggle play/pause
   const togglePlayPause = () => {
-    if (audioRef.current) {
+    if (audioRef.current?.src) {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
         audioRef.current.play();
       }
       setIsPlaying(!isPlaying);
+    } else {
+      setReciter(setting?.murottal?.reciter);
+      fetchReciterAudio(setting?.murottal?.reciter)
+        .then((url) => {
+          if (audioRef.current) {
+            audioRef.current.src = url;
+            audioRef.current.play();
+            setIsPlaying(true);
+            setDuration(audioRef.current.duration);
+            setCurrentTime(0);
+            setProgress(0);
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching reciter audio:', error);
+        });
     }
   };
 
@@ -67,10 +88,23 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc }) => {
   }, []);
 
   const fetchReciterAudio = async (reciter: string) => {
-    const surah = audioSrc.split('/').pop()?.split('.mp3')[0];
-    if (!surah) {
-      throw new Error('Surah not found in audioSrc');
+    let { id } = params;
+
+    if (!id) {
+      throw new Error('ID not found in params');
     }
+    if (!reciter) {
+      throw new Error('Reciter not found');
+    }
+
+    if (id.length == 1) {
+      id = `00${id}`;
+    } else if (id.length == 2) {
+      id = `0${id}`;
+    }
+
+    const surah = id;
+
     // Fetch the audio URL from the server
     const response = await fetch(`/api/quran/murottal?reciter=${reciter}&surah=${surah}`);
     if (!response.ok) {
@@ -82,12 +116,16 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc }) => {
 
   const handleReciterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedReciter = e.target.value;
+    setReciter(selectedReciter);
     fetchReciterAudio(selectedReciter)
       .then((url) => {
         if (audioRef.current) {
           audioRef.current.src = url;
           audioRef.current.play();
           setIsPlaying(true);
+          setDuration(audioRef.current.duration);
+          setCurrentTime(0);
+          setProgress(0);
         }
       })
       .catch((error) => {
@@ -97,7 +135,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <audio ref={audioRef} src={audioSrc} className="w-full h-10 rounded-md" />
+      <audio ref={audioRef} className="w-full h-10 rounded-md" />
 
       <div className='flex flex-col gap-2'>
         <div className="w-full flex justify-between items-center gap-2">
@@ -108,8 +146,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc }) => {
             {isPlaying ? (<Pause />) : (<Play />)}
           </button>
           <select
-            defaultValue="Alafasy"
             onChange={handleReciterChange}
+            value={reciter || setting?.murottal?.reciter}
             className="bg-white dark:bg-neutral-800 text-gray-800 dark:text-white border-none rounded-md px-2 py-1">
             <option value="AbdulBasit">Abdul Basit</option>
             <option value="Alafasy">Mishary Rashid Alafasy</option>

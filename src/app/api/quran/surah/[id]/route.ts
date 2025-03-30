@@ -66,7 +66,17 @@ export async function GET(request: NextRequest) {
       audio: surah.audio,
       surat_selanjutnya: surah.surat_selanjutnya,
       surat_sebelumnya: surah.surat_sebelumnya
-    });
+    },
+      {
+        status: 200,
+        statusText: "OK",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        }
+      });
   } catch (error) {
     return NextResponse.json({
       status: 404,

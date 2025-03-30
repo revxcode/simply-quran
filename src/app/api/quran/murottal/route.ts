@@ -50,5 +50,16 @@ export async function GET(request: NextRequest) {
 
   const audioUrl = reciter.url.replace("#SURAH_ID", surahId);
 
-  return NextResponse.json({ audioUrl });
+  return NextResponse.json({ audioUrl },
+    {
+      status: 200,
+      statusText: "OK",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      }
+    }
+  );
 }
