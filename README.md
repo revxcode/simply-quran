@@ -84,4 +84,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Made with ❤️ by Simply Quran Team
+Made with ❤️

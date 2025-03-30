@@ -2,13 +2,16 @@
 
 import { BookOpen, Heart, ChevronRight, ChevronUp, Settings, ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import { ModeToggle } from "../button/themeModeToggle";
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isQuranPage = pathname.startsWith("/quran");
+  const isHadistPage = pathname.startsWith("/hadist");
 
   const handleScroll = () => {
     if (containerRef.current) {
@@ -51,7 +54,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           <ChevronLeft className="w-6 h-6" />
         </button>
         <h1 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
-          Quran
+          {isQuranPage && "Quran"}
+          {isHadistPage && "Hadist"}
         </h1>
         <Link
           href="/quran/surah/settings"
