@@ -1,8 +1,8 @@
 # Simply Quran
 
-![Project Demo](https://github.com/revxcode/simply-quran/blob/main/demo.png)
-
 Simply Quran is a web application built with [Next.js](https://nextjs.org/) and TypeScript. It provides a simple and user-friendly interface for reading and exploring the Quran.
+
+![Project Demo](https://github.com/revxcode/simply-quran/blob/main/demo.png)
 
 ## Features
 
@@ -17,7 +17,7 @@ Simply Quran is a web application built with [Next.js](https://nextjs.org/) and 
 
 Make sure you have the following installed:
 
-- [Node.js](https://nodejs.org/) (v14 or later)
+- [Node.js](https://nodejs.org/) (v15)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
 ### Installation
@@ -25,7 +25,7 @@ Make sure you have the following installed:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/simply-quran.git
+git clone https://github.com/revxcode/simply-quran.git
 cd simply-quran
 ```
 
@@ -93,7 +93,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Quran API](https://alquran.cloud/) (or any other API used)
+- [Quran API](https://quran-api.santrikoding.com)
 
 ---
 
