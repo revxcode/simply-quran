@@ -1,7 +1,7 @@
 "use client"
 
 import MainLayout from "@/components/layouts/mainLayout"
-import { HadistCard } from "@/components/card/hadistPage"
+import { HadistCard } from "@/components/card/hadistCard"
 import { useEffect, useState } from "react"
 
 const fetchHadist = async () => {
