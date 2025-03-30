@@ -67,20 +67,6 @@ npm start
 yarn start
 ```
 
-## Folder Structure
-
-```
-/simply-quran
-├── public/         # Static assets
-├── src/            # Source code
-│   ├── components/ # Reusable components
-│   ├── pages/      # Next.js pages
-│   ├── styles/     # Global and component-specific styles
-│   └── utils/      # Utility functions
-├── .env.example    # Environment variable example file
-└── README.md       # Project documentation
-```
-
 ## Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests.
@@ -93,7 +79,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Quran API](https://quran-api.santrikoding.com)
+- [Quran API](https://quran-api.santrikoding.com/)
+- [Audio API](https://qurancentral.com/)
 
 ---
 
